@@ -1,0 +1,51 @@
+In this blog, we are going to see how we can generate advance test report such as net-master for cucumber using Maven-cucumber-reporting, an open source tool which generates pretty html report along with living documentation.
+
+For More Details on this report you can visit there official Git Page.
+
+Please Note before starting setup of this report I am assuming you have basic knowledge of maven, and it is already installed in local machine as well as in your ide along with all other maven plugin to execute test.
+
+Let’s check out how we can generate this report using cucumber maven Plugin.
+
+1)   In POM.Xml please add below dependency and plugin (Please make sure to use the version i have suggested other version might be unstable currently)
+
+<dependency>
+<groupId>net.masterthought</groupId>
+<artifactId>cucumber-reporting</artifactId>
+<version>1.0.0</version>
+</dependency>
+
+<plugin>
+<groupId>net.masterthought</groupId>
+<artifactId>maven-cucumber-reporting</artifactId>
+<version>2.8.0</version>
+<executions>
+<execution>
+<id>execution</id>
+<phase>test</phase>
+<goals>
+<goal>generate</goal>
+</goals>
+<configuration>
+<projectName>Project Name</projectName>
+<outputDirectory>${project.build.directory}/Report/cucumber-reports</outputDirectory>
+<cucumberOutput>${project.build.directory}/cucumber/cucumber.json</cucumberOutput>
+<skippedFails>true</skippedFails>
+<enableFlashCharts>false</enableFlashCharts>
+</configuration>
+</execution>
+</executions>
+</plugin>
+
+    2)   In the Runner File inside plugin tag add name of the report
+
+plugin= {"pretty","html:target/site/cucumber-pretty",
+"json:target/cucumber/cucumber.json"}
+
+    3)  Execute maven project using “mvn test” from command line.
+
+4)Refresh project now and inside \target\Report\cucumber-reports\cucumber-
+
+html-reports there would be report generated with name feature-overview.
+
+
+Generate Report will looks something like..
