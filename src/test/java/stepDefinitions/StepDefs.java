@@ -112,7 +112,7 @@ public class StepDefs {
 
 	@Then("^Message displayed LogOut Successfully$")
 	public void message_displayed_LogOut_Successfully() throws Throwable {
-		System.out.println("user sucessfully meg logout");
+		System.out.println("user sucessfully logged logout from the application");
 	    
 	}
 
